@@ -12,8 +12,8 @@ const Home = () => {
     <div>
       <Slider />
       <CarouselAds title="Latest Ads" requestType="latestAds" number={10} />
-      {/* <CarouselAds title="Best Ads" />
-      <CarouselAds title="Best Images Ads" />
+      <CarouselAds title="Most Liked" requestType="mostLiked" number={10} />
+      {/* <CarouselAds title="Best Images Ads" />
       <CarouselAds title="Best Videos Ads" />
       <CarouselAds title="Best Youtube Ads" /> */}
     </div>

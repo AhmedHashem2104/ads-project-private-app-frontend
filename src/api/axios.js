@@ -12,13 +12,13 @@ const APIS = {
     login : async (userData)  => {
          return await instance.post('/login' , userData)
     },
-    latestAds : async (requestType , number)  => {
+    homePageAds : async (requestType , number)  => {
       return await instance.get(`/${requestType}/${number}` , {
         headers : {
           'Authorization' : `Bearer ${localStorage.getItem("token")}`
         }
       })
- },
+ }
 }
 
 export default APIS

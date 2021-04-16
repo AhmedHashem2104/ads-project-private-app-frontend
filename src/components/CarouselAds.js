@@ -13,7 +13,7 @@ const CarouselAds = ({ title , requestType , number }) => {
    const [loading , setLoading] = useState(false)
    useEffect(() => {
       const latestAdsAPI = () => {
-         APIS.latestAds(requestType , number).then((res) => {
+         APIS.homePageAds(requestType , number).then((res) => {
             setLatestAdsState(res.data)
             setLoading(true)
          }).catch(err => {
@@ -22,6 +22,17 @@ const CarouselAds = ({ title , requestType , number }) => {
       }
       latestAdsAPI()
    }, [])
+
+   const nFormatter = (num) => {
+      console.log(typeof num)
+      if(num > 999 && num < 1000000){
+         return (num/1000)+ 'K'; // convert to K for number from > 1000 < 1 million 
+     }else if(num >= 1000000){
+         return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
+     }else if(num < 900){
+         return num; // if value < 1000, nothing to do
+     }
+    }
    const [open , setOpen] = useState(false)
    const [isOpen, setIsOpen] = useState(false)
    const [previewImage , setPreviewImage] = useState('')
@@ -131,7 +142,7 @@ const CarouselAds = ({ title , requestType , number }) => {
                                                    <ul>
                                                       <li>2hr 00mins</li>
                                                       <li>
-                                                         <Link to="action.html"><span>Action</span></Link>
+                                                         <Link to="action.html"><span>{nFormatter(value.likes)} Likes</span></Link>
                                                       </li>
                                                    </ul>
                                                 </div>
