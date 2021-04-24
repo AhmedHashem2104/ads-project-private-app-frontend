@@ -18,7 +18,35 @@ const APIS = {
           'Authorization' : `Bearer ${localStorage.getItem("token")}`
         }
       })
- }
+ },
+ countriesAPI : async () => {
+   return await instance.get('/country' , {
+    headers : {
+      'Authorization' : `Bearer ${localStorage.getItem("token")}`
+    }
+   })
+ },
+ categoriesAPI : async () => {
+  return await instance.get('/category' , {
+   headers : {
+     'Authorization' : `Bearer ${localStorage.getItem("token")}`
+   }
+  })
+},
+storeAd : async (data) => {
+  return await instance.post('/ad' , data , {
+   headers : {
+     'Authorization' : `Bearer ${localStorage.getItem("token")}`
+   }
+  })
+},
+myAdsFetch : async (page) => {
+  return await instance.get(`/myAds/${page}` , {
+   headers : {
+     'Authorization' : `Bearer ${localStorage.getItem("token")}`
+   }
+  })
+}
 }
 
 export default APIS

@@ -66,49 +66,7 @@ function Header() {
                                       </li>
                                    </ul>
                                 </li>
-                                <li className="menu-item">
-                                   <Link to="#">Tv Shows</Link>
-                                   <i className="fa fa-chevron-down gen-submenu-icon"></i>
-                                   <ul className="sub-menu">
-                                      <li className="menu-item menu-item-has-children">
-                                         <Link to="#">Tv Shows List</Link>
-                                         <i className="fa fa-chevron-down gen-submenu-icon"></i>
-                                         <ul className="sub-menu">
-                                            <li className="menu-item">
-                                               <Link to="tv-shows-load-more.html">Load More</Link>
-                                            </li>
-                                            <li className="menu-item">
-                                               <Link to="tv-shows-infinite-scroll.html">Infinite scroll</Link>
-                                            </li>
-                                            <li className="menu-item">
-                                               <Link to="tv-shows-pagination.html">Pagination</Link>
-                                            </li>
-                                         </ul>
-                                      </li>
-                                      <li className="menu-item menu-item-has-children">
-                                         <Link to="#">Tv Shows Style</Link>
-                                         <i className="fa fa-chevron-down gen-submenu-icon"></i>
-                                         <ul className="sub-menu">
-                                            <li className="menu-item">
-                                               <Link to="tv-shows-style-1.html">Style 1</Link>
-                                            </li>
-                                            <li className="menu-item">
-                                               <Link to="tv-shows-style-2.html">Style 2</Link>
-                                            </li>
-                                            <li className="menu-item">
-                                               <Link to="tv-shows-style-3.html">Style 3</Link>
-                                            </li>
-                                         </ul>
-                                      </li>
-                                      <li className="menu-item">
-                                         <Link to="single-tv-shows.html">Single Tv Shows</Link>
-                                      </li>
-                                      <li className="menu-item">
-                                         <Link to="single-episode.html">Single Episode</Link>
-                                      </li>
-                                   </ul>
-                                </li>
-                                <li className="menu-item">
+                               <li className="menu-item">
                                    <Link to="#">Video</Link>
                                    <i className="fa fa-chevron-down gen-submenu-icon"></i>
                                    <ul className="sub-menu">
@@ -168,7 +126,7 @@ function Header() {
                              </div>
                           </div>
                           <div className="gen-account-holder">
-                             <a style={{ cursor : 'pointer' }} id="gen-user-btn"><i className="fa fa-user"></i></a>
+                             <div style={{ cursor : 'pointer' , backgroundColor : 'red' , height : 50 , display:'flex' , justifyContent : 'center' , alignItems : 'center' , width : 50 , borderRadius : 50 }} id="gen-user-btn"><i className="fa fa-user"></i></div>
                              <div className="gen-account-menu">
                                 <ul className="gen-account-menu">
                                    {/* <li>
@@ -180,20 +138,20 @@ function Header() {
                                          Register </Link>
                                    </li> */}
                                    <li>
-                                      <Link to="library.html">
+                                      <Link to="/">
                                          <i className="fa fa-user"></i>
                                          {username} </Link>
                                    </li>
                                    <li>
-                                      <Link to="library.html"><i className="fa fa-list"></i>
+                                      <Link to="/dashboard"><i className="fa fa-list"></i>
                                          Dashboard </Link>
                                    </li>
                                    <li>
-                                      <Link to="library.html"><i className="fa fa-ad"></i>
+                                      <Link to="/myads/1"><i className="fa fa-ad"></i>
                                          My Ads </Link>
                                    </li>
                                    <li>
-                                      <Link to="upload-video.html"> <i className="fa fa-upload"></i>
+                                      <Link to="/upload-ad"> <i className="fa fa-upload"></i>
                                          Upload Ad </Link>
                                    </li>
                                    <li>

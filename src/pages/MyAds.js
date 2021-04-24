@@ -1,27 +1,22 @@
 import React , { useState , useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import OwlCarousel from 'react-owl-carousel';
+import { Link, useParams } from 'react-router-dom'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Lightbox } from "react-modal-image";
 import ModalVideo from 'react-modal-video'
 import 'react-modal-video/css/modal-video.min.css';
 import APIS, { API_IMAGE } from '../api/axios'
-const CarouselAds = ({ title , requestType , number }) => {
-   const [latestAdsState , setLatestAdsState] = useState([])
+const MyAds = () => {
+    let params = useParams()
+   const [ads , setAds] = useState([])
    const [error , setError] = useState('')
    const [loading , setLoading] = useState(false)
    useEffect(() => {
-      const latestAdsAPI = () => {
-         APIS.homePageAds(requestType , number).then((res) => {
-            setLatestAdsState(res.data)
-            setLoading(true)
-         }).catch(err => {
-            setError(`No Data Found`)
-         })
+      const myAdsAPI = () => {
+         APIS.myAdsFetch(params.page)
       }
-      latestAdsAPI()
-   }, [number , requestType])
+      myAdsAPI()
+   }, [params.page])
 
    const nFormatter = (num) => {
       if(num > 999 && num < 1000000){
@@ -63,16 +58,8 @@ const CarouselAds = ({ title , requestType , number }) => {
         <div className="container">
            <div className="row">
               <div className="col-xl-6 col-lg-6 col-md-6">
-                 <h4 className="gen-heading-title">{title}</h4>
-              </div>
-              <div className="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-                 <div className="gen-movie-action">
-                    <div className="gen-btn-container text-right">
-                       <Link to="tv-shows-pagination.html" className="gen-button gen-button-flat">
-                          <span className="text">More Ads</span>
-                       </Link>
-                    </div>
-                 </div>
+                  <br />
+                 <h4 className="gen-heading-title">My Ads</h4>
               </div>
            </div>
            <div className="row mt-3">
@@ -82,27 +69,18 @@ const CarouselAds = ({ title , requestType , number }) => {
                        data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
                        data-loop="false" data-margin="30"> */}
                        {loading ?
-                             <OwlCarousel className='owl-theme' 
-                             items={4} 
-                             margin={10} 
-                             nav
-                             autoplay 
-                             animateIn={'bounceInRight'} 
-                             animateOut={'bounceOutLeft'}
-                             dots={false}
-                             navText={['<i class="fas fa-chevron-left" style="font-size: 25px;"></i>' , '<i class="fas fa-chevron-right" style="font-size: 25px;"></i>']}
-                             >
+                             <div className="row">
                                 {
                                    !error ?
-                                   latestAdsState ?
-                                   latestAdsState.map((value , key) => (
-                                    <div className="item" key={key}>
+                                   ads ?
+                                   ads.map((value , key) => (
+                                    <div className="col col-4" key={key}>
                                     <div
                                        className="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
                                        <div className="gen-carousel-movies-style-2 movie-grid style-2">
                                           <div className="gen-movie-contain">
                                              <div className="gen-movie-img">
-                                                <img src={`${API_IMAGE}/${value.image}`} alt="owl-carousel-video" style={{ maxHeight : 250 }} />
+                                                <img src={`${API_IMAGE}/${value.image}`} alt="owl-carousel-video" style={{ maxHeight : 250 , width : '100%' }} />
                                                 <div className="gen-movie-add">
                                                    <div className="wpulike wpulike-heart">
                                                       <div className="wp_ulike_general_class wp_ulike_is_not_liked"><button
@@ -157,7 +135,7 @@ const CarouselAds = ({ title , requestType , number }) => {
                                    :
                                    <></>
                                 }
-                             </OwlCarousel>
+                             </div>
                        
                        :
                        <></>}
@@ -170,4 +148,4 @@ const CarouselAds = ({ title , requestType , number }) => {
     )
 }
 
-export default CarouselAds
+export default MyAds
